@@ -37,7 +37,7 @@ class UpdateBook extends Component {
 
 UpdateBook.propTypes = {
   shelf: PropTypes.string,
-  bookID: PropTypes.string // id
+  bookID: PropTypes.string
 };
 
 export default UpdateBook;
