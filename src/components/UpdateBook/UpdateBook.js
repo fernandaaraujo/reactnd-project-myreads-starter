@@ -6,7 +6,7 @@ class UpdateBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookStatus: this.props.shelf
+      bookStatus: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +23,7 @@ class UpdateBook extends Component {
   render() {
     return (
       <div className="book-shelf-changer">
-        <select value={this.state.value} onChange={this.handleChange}>
+        <select defaultValue={this.props.shelf} value={this.state.value} onChange={this.handleChange}>
           <option value="none" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>

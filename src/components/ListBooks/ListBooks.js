@@ -9,8 +9,6 @@ class ListBooks extends Component {
     const { books, status, titleSection } = this.props;
     const currentlyBooks = books.filter(book => book.shelf === status);
 
-    console.log(books[0].imageLinks.thumbnail);
-
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{titleSection}</h2>
@@ -21,7 +19,7 @@ class ListBooks extends Component {
                 <div className="book">
                   <div className="book-top">
                     <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})` }} />
-                    <UpdateBook bookID={book.id} />
+                    <UpdateBook bookID={book.id} shelf={status} />
                   </div>
                   <div className="book-title">{book.title}</div>
                   <div className="book-authors">{book.authors}</div>

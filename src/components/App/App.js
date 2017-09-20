@@ -25,8 +25,6 @@ class BooksApp extends React.Component {
     });
   }
 
-  //       this.state.books.length > 0 && <ListBooks books={this.state.books} status="none" />
-
   render() {
     return (
       <div className="app">
