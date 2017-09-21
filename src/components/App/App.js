@@ -8,13 +8,6 @@ class BooksApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      /**
-       * TODO: Instead of using this state variable to keep track of which page
-       * we're on, use the URL in the browser's address bar. This will ensure that
-       * users can use the browser's back and forward buttons to navigate between
-       * pages, as well as provide a good URL they can bookmark and share.
-       */
-      showSearchPage: false,
       books: []
     };
   }
@@ -50,23 +43,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              { this.state.books.length > 0 &&
-                <div>
-                  <ListBooks books={this.state.books} status="currentlyReading" titleSection="Currently Reading" />
-                  <ListBooks books={this.state.books} status="wantToRead" titleSection="Want to Read" />
-                  <ListBooks books={this.state.books} status="read" titleSection="Read" />
-                </div>
-              }
-            </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-          </div>
+          this.state.books.length > 0 && <ListBooks books={this.state.books} />
         )}
       </div>
     );
