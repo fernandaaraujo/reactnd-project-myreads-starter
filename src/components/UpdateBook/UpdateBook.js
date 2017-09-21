@@ -5,25 +5,20 @@ import * as BooksAPI from '../../utilities/BooksAPI';
 class UpdateBook extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      bookStatus: ''
-    };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      bookStatus: event.target.value
-    });
-
-    BooksAPI.update(this.props.bookID, this.state.bookStatus);
+    BooksAPI.update(this.props.book, event.target.value);
   }
 
   render() {
+    const { book } = this.props;
+
     return (
       <div className="book-shelf-changer">
-        <select defaultValue={this.props.shelf} value={this.state.value} onChange={this.handleChange}>
+        <select defaultValue={book.shelf ? book.shelf : 'none'} value={this.state.value} onChange={this.handleChange}>
           <option value="none" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
@@ -36,8 +31,7 @@ class UpdateBook extends Component {
 }
 
 UpdateBook.propTypes = {
-  shelf: PropTypes.string,
-  bookID: PropTypes.string
+  book: PropTypes.object
 };
 
 export default UpdateBook;

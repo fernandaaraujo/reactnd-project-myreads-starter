@@ -1,37 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import UpdateBook from '../UpdateBook/UpdateBook';
+import Book from '../BookComponent/BookComponent';
 
 import './BookSection.css';
 
-class BookSection extends Component {
-  render() {
-    const { books, status, titleSection } = this.props;
-    const currentlyBooks = books.filter(book => book.shelf === status);
+const BookSection = (props) => {
+  const { books, status, titleSection } = props;
+  const currentlyBooks = books.filter(book => book.shelf === status);
 
-    return (
-      <div className="bookshelf">
-        <h2 className="bookshelf-title">{titleSection}</h2>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
-            { currentlyBooks.map((book, index) => (
-              <li key={book.id}>
-                <div className="book">
-                  <div className="book-top">
-                    <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})` }} />
-                    <UpdateBook bookID={book.id} shelf={status} />
-                  </div>
-                  <div className="book-title">{book.title}</div>
-                  <div className="book-authors">{book.authors}</div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+  return (
+    <div className="bookshelf">
+      <h2 className="bookshelf-title">{titleSection}</h2>
+      <div className="bookshelf-books">
+        <ol className="books-grid">
+          { currentlyBooks.map((book, index) => (
+            <Book key={book.id} book={book} />
+          ))}
+        </ol>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 BookSection.propTypes = {
   books: PropTypes.array,

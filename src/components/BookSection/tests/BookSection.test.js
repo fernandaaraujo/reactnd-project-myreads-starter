@@ -30,6 +30,6 @@ describe('test book section component', () => {
   });
 
   it('should render only wantToRead books', () => {
-    expect(updateBook.find('.book').length).toBe(1);
+    expect(updateBook.find('Book').length).toBe(1);
   });
 });
