@@ -10,6 +10,7 @@ import './App.css';
 class BooksApp extends React.Component {
   constructor(props) {
     super(props);
+    const maxResults = 3;
 
     this.state = {
       query: '',
@@ -25,21 +26,13 @@ class BooksApp extends React.Component {
   }
 
   updateQuery(query) {
-    this.setState({ query: query.trim() });
+    BooksAPI.search(query, this.maxResults).then((books) => {
+      this.setState({ books });
+    });
   }
 
   render() {
     const { query, books } = this.state;
-
-    let showingBooks;
-    if (query) {
-      const match = new RegExp(escapeRegExp(query), 'i');
-      showingBooks = books.filter(book => match.test(book.title));
-    } else {
-      showingBooks = books;
-    }
-
-    showingBooks.sort(sortBy('title'));
 
     return (
       <div className="app">
@@ -64,7 +57,7 @@ class BooksApp extends React.Component {
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-              { showingBooks.map((book, index) => (
+              { this.state.books.map((book, index) => (
                 <li key={book.id}>
                   <div className="book">
                     <div className="book-top">
