@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as BooksAPI from '../../utilities/BooksAPI';
 
+import './UpdateBook.css';
+
 class UpdateBook extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,7 @@ class UpdateBook extends Component {
 
     return (
       <div className="book-shelf-changer">
-        <select defaultValue={book.shelf ? book.shelf : 'none'} value={this.state.value} onChange={this.handleChange}>
+        <select defaultValue={book.shelf ? book.shelf : 'none'} onChange={() => this.handleChange(this.state.value)}>
           <option value="none" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
