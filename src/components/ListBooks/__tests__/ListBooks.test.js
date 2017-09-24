@@ -1,23 +1,35 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import ListBooks from '../../ListBooks/ListBooks';
+import { shallow, mount } from 'enzyme';
+import localStorage from 'mock-local-storage';
+
+import ListBooks from '../ListBooks';
+
+global.window = {};
+window.localStorage = global.localStorage;
 
 describe('test list books component', () => {
-  const props = [
-    {
-      bookID: 'nggnmAEACAAJ',
-      shelf: 'currentlyReading',
-      subtitle: 'A Complete Introduction',
-      title: 'The Linux Command Line'
-    }, {
-      bookID: 'pggnmAEACAAJ',
-      shelf: 'wantToRead',
-      subtitle: 'A Complete Introduction 2',
-      title: 'The Linux Command Line 2'
-    }];
+  let props;
+  let listBooks;
 
-  const listBooks = shallow(<ListBooks {...props} />);
-  console.log(listBooks.debug());
+  beforeEach(() => {
+    props = {
+      books: [
+        {
+          id: 'nggnmAEACAAJ',
+          shelf: 'currentlyReading',
+          subtitle: 'A Complete Introduction',
+          title: 'The Linux Command Line'
+        }, {
+          id: 'pggnmAEACAAJ',
+          shelf: 'wantToRead',
+          subtitle: 'A Complete Introduction 2',
+          title: 'The Linux Command Line 2'
+        }
+      ]
+    };
+
+    listBooks = shallow(<ListBooks {...props} />);
+  });
 
   it('should render list books', () => {
     expect(listBooks.find('.list-books').exists()).toBe(true);
@@ -28,6 +40,6 @@ describe('test list books component', () => {
   });
 
   it('should render three books sections', () => {
-    expect(listBooks.find('.list-books-content').length).toBe(3);
+    expect(listBooks.find('BookSection').length).toBe(3);
   });
 });

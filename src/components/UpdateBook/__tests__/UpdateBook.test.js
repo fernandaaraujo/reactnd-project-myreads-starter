@@ -1,25 +1,28 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import UpdateBook from '../../UpdateBook/UpdateBook';
+import localStorage from 'mock-local-storage';
+
+import UpdateBook from '../UpdateBook';
+
+global.window = {};
+window.localStorage = global.localStorage;
 
 describe('test update book component', () => {
-  const props = {
-    book: {
-      id: 'nggnmAEACAAJ',
-      shelf: 'currentlyReading',
-      subtitle: 'A Complete Introduction',
-      title: 'The Linux Command Line'
-    }
-  };
+  let props;
+
+  beforeEach(() => {
+    props = {
+      book: {
+        id: 'nggnmAEACAAJ',
+        shelf: 'currentlyReading',
+        subtitle: 'A Complete Introduction',
+        title: 'The Linux Command Line'
+      }
+    };
+  });
 
   it('should render books status options', () => {
     const updateBook = shallow(<UpdateBook {...props} />);
     expect(updateBook.find('.book-shelf-changer').exists()).toBe(true);
-  });
-
-  it('shoudl update book status from wantToRead to currentlyReading', () => {
-    const updateBook = mount(<UpdateBook {...props} />);
-    updateBook.find('select').simulate('change', { target: { value: 'wantToRead' } });
-    expect(updateBook.find('select').props().value).toBe("wantToRead");
   });
 });
