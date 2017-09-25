@@ -1,0 +1,74 @@
+.list-books-title {
+  padding: 10px 0;
+  background: #2e7c31;
+  text-align: center;
+}
+
+.list-books-title h1 {
+  font-weight: 400;
+  margin: 0;
+  color: white;
+}
+
+.book-data {
+  text-align: center;
+}
+
+.book-subtitle {
+  margin-bottom: 0;
+}
+
+.book-authors {
+  margin-top: 0;
+}
+
+.book-preview {
+  background-color: #60ac5d;
+  color: white;
+  padding: 1em 2em;
+  text-decoration: none;
+}
+
+.book-preview:hover {
+  background-color: #2e7c31;
+}
+
+.book-description {
+  text-align: justify;
+  padding: 1em 2em;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+}
+
+.book-container {
+  display: flex;
+  justify-content: center;
+}
+
+.book-top {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.book-cover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: #eee;
+  width: 130px;
+  height: 190px;
+}
+
+.close-details {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url('../../icons/arrow-back.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+}
