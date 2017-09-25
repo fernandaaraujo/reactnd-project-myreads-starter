@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import * as BooksAPI from '../../utilities/BooksAPI';
 import ListBooks from '../ListBooks/ListBooks';
 import SearchBooks from '../SearchBooks/SearchBooks';
+import BookDetails from '../BookDetails/BookDetails';
 
 import './App.css';
 
@@ -35,6 +36,7 @@ class BooksApp extends Component {
             books={this.state.books}
           />
         )} />
+        <Route path="/details/:id" component={BookDetails} />
       </div>
     );
   }
