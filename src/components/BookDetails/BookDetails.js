@@ -27,24 +27,26 @@ class BookDetails extends Component {
     const bookImage = book.imageLinks ? book.imageLinks.thumbnail : '';
 
     return (
-      <div className="book-details">
+      <section className="book-details-container">
         <Link className="close-details" to="/">Close</Link>
-        <div className="list-books-title">
-          <h1>{book.title}</h1>
-        </div>
-        <div className="book-data">
-          <div className="book-container">
-            <div className="book-top">
-              <div className="book-cover" style={{ backgroundImage: `url(${bookImage})` }} />
-              <UpdateBook book={book} />
-            </div>
+        <div className="book-details">
+          <div className="list-books-title">
+            <h1>{book.title}</h1>
           </div>
-          <h3 className="book-subtitle">{book.subtitle}</h3>
-          <p className="book-authors">{book.authors}</p>
-          <p className="book-description">{book.description}</p>
-          <a className="book-preview" href={book.previewLink}>Preview</a>
+          <div className="book-data">
+            <div className="book-container">
+              <div className="book-top">
+                <div className="book-cover" style={{ backgroundImage: `url(${bookImage})` }} />
+                <UpdateBook book={book} />
+              </div>
+            </div>
+            <h3 className="book-subtitle">{book.subtitle}</h3>
+            <p className="book-authors">{book.authors}</p>
+            <p className="book-description">{book.description}</p>
+            <a className="book-preview" href={book.previewLink}>Preview</a>
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
