@@ -17,12 +17,26 @@ class SearchBooks extends Component {
     };
   }
 
+  updateShowingBooks(shelfBooks) {
+    const updatedBooks = shelfBooks;
+
+    for (let i = 0; i < this.props.books.length; i += 1) {
+      for (let n = 0; n < updatedBooks.length; n += 1) {
+        if (updatedBooks[n].title === this.props.books[i].title && updatedBooks[n].shelf !== this.props.books[i].shelf) {
+          updatedBooks[n].shelf = this.props.books[i].shelf;
+        }
+      }
+    }
+
+    return updatedBooks;
+  }
+
   updateQuery(query) {
     this.setState({ query });
 
     BooksAPI.search(query, this.state.maxResults).then((showingBooks) => {
       if (query) {
-        this.setState({ showingBooks });
+        this.setState({ showingBooks: this.updateShowingBooks(showingBooks) });
       } else {
         this.setState({ showingBooks: this.props.books });
       }
