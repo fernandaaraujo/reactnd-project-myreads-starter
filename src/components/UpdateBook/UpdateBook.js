@@ -20,7 +20,7 @@ class UpdateBook extends Component {
 
     return (
       <div className="book-shelf-changer">
-        <select defaultValue={book.shelf ? book.shelf : 'none'} onChange={() => this.handleChange(this.state.value)}>
+        <select defaultValue={book.shelf ? book.shelf : 'none'} onChange={this.handleChange}>
           <option value="none" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
