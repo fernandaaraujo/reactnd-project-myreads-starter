@@ -5,7 +5,7 @@ import UpdateBook from '../UpdateBook/UpdateBook';
 
 import './BookComponent.css';
 
-const BookComponent = ({ book }) => {
+const BookComponent = ({ book, updateBook }) => {
   const bookImage = book.imageLinks ? book.imageLinks.thumbnail : '';
 
   return (
@@ -13,7 +13,7 @@ const BookComponent = ({ book }) => {
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ backgroundImage: `url(${bookImage})` }} />
-          <UpdateBook book={book} />
+          <UpdateBook book={book} updateBook={updateBook} />
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors}</div>
@@ -24,7 +24,8 @@ const BookComponent = ({ book }) => {
 };
 
 BookComponent.propTypes = {
-  book: PropTypes.object
+  book: PropTypes.object,
+  updateBook: PropTypes.func
 };
 
 export default BookComponent;

@@ -5,7 +5,7 @@ import Book from '../BookComponent/BookComponent';
 import './BookSection.css';
 
 const BookSection = (props) => {
-  const { books, status, titleSection } = props;
+  const { books, status, titleSection, updateBook } = props;
   const currentlyBooks = books.filter(book => book.shelf === status);
 
   return (
@@ -14,7 +14,7 @@ const BookSection = (props) => {
       <div className="bookshelf-books">
         <ol className="books-grid">
           { currentlyBooks.map((book, index) => (
-            <Book key={book.id} book={book} />
+            <Book key={book.id} book={book} updateBook={updateBook} />
           ))}
         </ol>
       </div>
@@ -25,7 +25,8 @@ const BookSection = (props) => {
 BookSection.propTypes = {
   books: PropTypes.array,
   status: PropTypes.string,
-  titleSection: PropTypes.string
+  titleSection: PropTypes.string,
+  updateBook: PropTypes.func
 };
 
 export default BookSection;

@@ -6,7 +6,7 @@ import BookSection from '../BookSection/BookSection';
 
 import './ListBooks.css';
 
-const ListBooks = ({ books }) => {
+const ListBooks = ({ books, updateBook }) => {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -14,9 +14,9 @@ const ListBooks = ({ books }) => {
       </div>
       <div className="list-books-content">
         <div>
-          <BookSection books={books} status="currentlyReading" titleSection="Currently Reading" />
-          <BookSection books={books} status="wantToRead" titleSection="Want to Read" />
-          <BookSection books={books} status="read" titleSection="Read" />
+          <BookSection books={books} updateBook={updateBook} status="currentlyReading" titleSection="Currently Reading" />
+          <BookSection books={books} updateBook={updateBook} status="wantToRead" titleSection="Want to Read" />
+          <BookSection books={books} updateBook={updateBook} status="read" titleSection="Read" />
         </div>
       </div>
       <Link
@@ -27,7 +27,8 @@ const ListBooks = ({ books }) => {
 };
 
 ListBooks.propTypes = {
-  books: PropTypes.array
+  books: PropTypes.array,
+  updateBook: PropTypes.func
 };
 
 export default ListBooks;
