@@ -17,18 +17,20 @@ class BooksApp extends Component {
     };
   }
 
-  componentDidMount() {
+  getBooks() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
   }
 
+  componentDidMount() {
+    this.getBooks();
+  }
+
   updateBook = (book, event) => {
     BooksAPI.update(book, event.target.value);
 
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
-    });
+    this.getBooks();
   }
 
   render() {
