@@ -62,7 +62,7 @@ class SearchBooks extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             { showingBooks && showingBooks.length > 0 && showingBooks.map((book, index) => (
-              <Book key={book.id} book={book} />
+              <Book key={book.id} book={book} updateBook={this.props.updateBook} />
             ))}
           </ol>
         </div>
@@ -72,7 +72,8 @@ class SearchBooks extends Component {
 }
 
 SearchBooks.propTypes = {
-  books: PropTypes.array
+  books: PropTypes.array,
+  updateBook: PropTypes.func
 };
 
 export default SearchBooks;
